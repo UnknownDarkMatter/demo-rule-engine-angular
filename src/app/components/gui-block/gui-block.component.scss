@@ -1,0 +1,53 @@
+.gui-block{
+    position: absolute;
+    width:38px;
+    height:38px;
+    border: solid black 1px;
+}
+
+.filled-block{
+    background-color: slategray;
+}
+
+.empty-block{
+    background-color: transparent;
+}
+
+.packman-block{
+    display: grid;
+    background-color: transparent;
+    z-index: 10;
+
+    img{
+        display: block;
+        margin: auto;
+        width:25px;
+        height:25px;
+    }
+}
+
+.robot-block{
+    display: grid;
+    background-color: transparent;
+    z-index: 10;
+
+    img{
+        display: block;
+        margin: auto;
+        width:42px;
+        height:42px;
+    }
+}
+
+.blue-bullet-block{
+    display: grid;
+    background-color: transparent;
+    z-index: 9;
+
+    img{
+        display: block;
+        margin: auto;
+        width:20px;
+        height:20px;
+    }
+}

@@ -1,0 +1,5 @@
+<div #mainPageDiv class="wrapper" tabindex="0" (keypress)="onKeyPress($event);">
+    <div class="blocks-contour">
+        <app-gui-block *ngFor="let guiBlock of GuiBlocks | async" [GuiBlock]="guiBlock"></app-gui-block>
+    </div>
+</div>

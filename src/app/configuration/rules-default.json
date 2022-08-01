@@ -1,0 +1,672 @@
+{
+  "name": "root",
+  "childs": [
+    {
+      "name": "behavior",
+      "childs": [
+        {
+          "name": "moving-object",
+          "position": "2,2"
+        },
+        {
+          "name": "robot-object",
+          "position": "8,9",
+          "childs": [
+            {
+              "name": "move-goto",
+              "repeat": "3",
+              "direction": "right",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "3",
+              "direction": "up",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "8",
+              "direction": "right",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "5",
+              "direction": "down",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "2",
+              "direction": "left",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "2",
+              "direction": "down",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "10",
+              "direction": "right",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "11",
+              "direction": "up",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "7",
+              "direction": "left",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "2",
+              "direction": "down",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "12",
+              "direction": "left",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "2",
+              "direction": "up",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "6",
+              "direction": "left",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "7",
+              "direction": "down",
+              "wait-milliseconds": "100"
+            },
+            {
+              "name": "move-goto",
+              "repeat": "6",
+              "direction": "right",
+              "wait-milliseconds": "100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rules",
+      "childs": [
+        {
+          "name":"game-over-if-touch-robot",
+          "childs":[
+            {
+              "name":"blue-bullets-are-eaten",
+              "childs":[
+                {
+                  "name": "move-inside-borders",
+                  "childs": [
+                    {
+                      "name": "no-move-on-filled-blocks",
+                      "childs": [
+                        {
+                          "name": "move-object"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "move-robot"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "map",
+      "size": "30,15",
+      "childs": [
+        {
+          "name": "empty-block",
+          "position": "2,2"
+        },
+        {
+          "name": "empty-block",
+          "position": "2,3",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,5",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,7",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,8",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,10",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,12",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "2,14",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "3,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "4,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "5,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "6,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "7,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,3",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,5",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,7",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "9,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "10,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "12,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "13,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "14,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "15,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "16,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "16,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "17,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "18,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "20,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "21,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "22,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "15,5",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "15,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "14,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "13,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "12,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,7",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,8",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,10",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "11,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "12,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "13,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "14,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "15,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "16,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "17,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "18,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,10",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,8",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,7",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "18,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "17,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "16,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "10,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "9,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "8,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "7,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "6,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "5,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "4,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "3,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "20,3",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "20,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "21,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "22,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "23,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "24,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "25,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "26,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,2",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,3",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,4",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,5",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,6",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,7",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,8",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,9",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,10",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,11",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,12",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "27,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "26,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "25,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "24,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "23,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "22,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "21,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "20,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "19,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "18,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "17,13",
+          "has-blue-bullet":true
+        },
+        {
+          "name": "empty-block",
+          "position": "17,12",
+          "has-blue-bullet":true
+        }
+
+      ]
+    }
+  ]
+}

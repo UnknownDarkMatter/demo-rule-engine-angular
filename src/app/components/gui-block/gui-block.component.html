@@ -1,0 +1,5 @@
+<div [style.left]="getX()"  [style.top]="getY()" [ngClass]="'gui-block ' + getClassName()" >
+    <img src="../../../assets/images/packman.png" *ngIf="getClassName() === 'packman-block'" />
+    <img src="../../../assets/images/robot.webp" *ngIf="getClassName() === 'robot-block'" />
+    <img src="../../../assets/images/blue-bullet.png" *ngIf="getClassName() === 'blue-bullet-block'" />
+</div>

@@ -1,0 +1,19 @@
+.wrapper{
+    display: grid;
+    height: 70px;
+    width:100%;
+    background-color: lightcyan;
+
+    .appTitle{
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 22px;
+    }
+
+    .pointsArea{
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+    }
+
+}
