@@ -67,6 +67,12 @@ export class GuiManager {
                 'position':`${objectMoving.to.x},${objectMoving.to.y}`});
     }
 
+    public showGameOver(){
+        this.guiUpdateSubject.next({
+            'action':Constants.Gui.Actions.GameOver, 
+            'object':null, 
+            'position':null});
+    }
     
     private onEvent(event:EventGeneric){
         if(event instanceof EventKeyPress){

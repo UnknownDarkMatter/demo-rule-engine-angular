@@ -33,6 +33,9 @@ export class MainPageComponent implements AfterViewInit {
     }
 
     onGuiAction(guiAction:GuiAction){
+        if(guiAction.action === Constants.Gui.Actions.GameOver){
+            this.showGameOver();
+        }
         if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.Objects.FilledBlock.Name){
             this.createObject(guiAction.position, Constants.Gui.Objects.FilledBlock.Name);
         }
@@ -84,4 +87,7 @@ export class MainPageComponent implements AfterViewInit {
         this.GuiBlocks = of(this._guiBlocks);
     }
 
-}
+    private showGameOver(){
+        alert('game over');
+    }
+}   

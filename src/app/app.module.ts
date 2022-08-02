@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing-module';
 import { AppComponent } from './app.component';
@@ -12,18 +13,21 @@ import { AppEngine } from './business/app-engine';
 import { AppLoader } from './business/app-loader';
 import { PackmanService } from './business/packman/packman-service';
 import { GuiBlockComponent } from './components/gui-block/gui-block.component';
+import { GameOverDialogComponent } from './components/game-over-dialog/game-over-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainHeaderComponent,
     MainPageComponent,
-    GuiBlockComponent
+    GuiBlockComponent,
+    GameOverDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [GuiManager, AppEngine, AppLoader, PackmanService],
   bootstrap: [AppComponent]

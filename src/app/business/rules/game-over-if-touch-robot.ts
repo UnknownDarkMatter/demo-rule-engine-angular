@@ -31,6 +31,7 @@ export class GameOverIfTouchRobot implements RuleGeneric {
         if(movingObjectPosition != null && robotPosition != null && movingObjectPosition.toString() === robotPosition.toString()){
             if(Constants.enableLogs) console.log(`... GameOverIfTouchRobot: Game is over. movingObjectPosition:'${movingObjectPosition.toString()}', robotPosition:'${robotPosition.toString()}'.`);
             this.appEngine.stopGame();
+            this.appEngine.guiManager.showGameOver();
         } else {
             if(Constants.enableLogs) console.log(`... GameOverIfTouchRobot: Game is not over. movingObjectPosition:'${movingObjectPosition != null ? movingObjectPosition.toString() : 'null'}', robotPosition:'${robotPosition != null ? robotPosition.toString() : 'null'}'.`);
         }

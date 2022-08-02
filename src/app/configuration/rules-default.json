@@ -9,7 +9,7 @@
           "position": "2,2"
         },
         {
-          "name": "robot-object",
+          "name": "robot-object_nok",
           "position": "8,9",
           "childs": [
             {

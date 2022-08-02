@@ -6,6 +6,7 @@ export class Constants  {
        "Actions":{
            "Create":"Create",
            "Delete":"Delete",
+           "GameOver":"GameOver"
         },
        "Objects":{
            "FilledBlock":{
