@@ -31,6 +31,10 @@ export class BlueBulletsAreEaten implements RuleGeneric {
         this.robotObjectEatBlueBullet(behaviorObject, mapObject, modelModifications);
     }
 
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
+
     private movingObjectEatBlueBullet(behaviorObject:any, mapObject:any, modelModifications:ModelModificationsCollection){
         const movingObjectPosition = RulesExtensions.getMovingObjectPosition(behaviorObject, modelModifications, true);
         if(!movingObjectPosition) {return;}

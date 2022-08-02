@@ -39,4 +39,8 @@ export class GameOverIfTouchRobot implements RuleGeneric {
         //     movingObjectPosition, 
         //     Constants.Gui.Objects.BlueBullet.Name);
     }
+
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
 }

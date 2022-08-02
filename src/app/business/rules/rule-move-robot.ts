@@ -67,4 +67,8 @@ export class RuleMoveRobot implements RuleGeneric {
         }
     }
 
+
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
 }

@@ -42,6 +42,10 @@ export class RaspBerryShow implements RuleGeneric {
         }
     }
 
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
+
     private tryShowRaspberryAtMovingObjectPosition(raspberryAtMovingObjectPosition:any, movingObjectPosition:ObjectPosition){
         if(!raspberryAtMovingObjectPosition) {return;}
         let isVisible = raspberryAtMovingObjectPosition[Constants.Rules.RaspBerryShow.BlockVisiblePropertyName];

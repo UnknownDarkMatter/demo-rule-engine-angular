@@ -39,4 +39,8 @@ export class RuleMoveInsideBorders implements RuleGeneric {
             }
         }
     }
+
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
 }

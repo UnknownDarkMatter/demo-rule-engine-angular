@@ -66,4 +66,8 @@ export class RuleMoveObject implements RuleGeneric {
             modelModifications.modelModifications.push(modelModification);
         }
     }
+
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
 }

@@ -39,6 +39,10 @@ export class RaspBerryAreEaten implements RuleGeneric {
 
     }
 
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
+
     private movingObjectEatRaspBerry(behaviorObject:any, mapObject:any, modelModifications:ModelModificationsCollection){
         
         const movingObjectPosition = RulesExtensions.getMovingObjectPosition(behaviorObject, modelModifications, true);

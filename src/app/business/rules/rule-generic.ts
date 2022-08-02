@@ -13,4 +13,8 @@ export class RuleGeneric {
         modelModifications:ModelModificationsCollection){
 
     }
+
+    public isDynamicConditionSatisfied():boolean{
+        return true;
+    }
 }
