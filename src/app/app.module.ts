@@ -13,7 +13,7 @@ import { AppEngine } from './business/app-engine';
 import { AppLoader } from './business/app-loader';
 import { PackmanService } from './business/packman/packman-service';
 import { GuiBlockComponent } from './components/gui-block/gui-block.component';
-import { GameOverDialogComponent } from './components/game-over-dialog/game-over-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +21,6 @@ import { GameOverDialogComponent } from './components/game-over-dialog/game-over
     MainHeaderComponent,
     MainPageComponent,
     GuiBlockComponent,
-    GameOverDialogComponent
   ],
   imports: [
     BrowserModule,

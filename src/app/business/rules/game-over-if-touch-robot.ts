@@ -36,9 +36,6 @@ export class GameOverIfTouchRobot implements RuleGeneric {
             if(Constants.enableLogs) console.log(`... GameOverIfTouchRobot: Game is not over. movingObjectPosition:'${movingObjectPosition != null ? movingObjectPosition.toString() : 'null'}', robotPosition:'${robotPosition != null ? robotPosition.toString() : 'null'}'.`);
         }
 
-        // this.appEngine.guiManager.removeObject(
-        //     movingObjectPosition, 
-        //     Constants.Gui.Objects.BlueBullet.Name);
     }
 
     public isDynamicConditionSatisfied():boolean{
