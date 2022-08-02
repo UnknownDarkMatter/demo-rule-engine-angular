@@ -1,5 +1,5 @@
 export class Constants  {
-    static enableLogs = false
+    static enableLogs = true
 
     static Gui = 
     {
@@ -16,6 +16,9 @@ export class Constants  {
            },
            "BlueBullet":{
             "Name":"BlueBullet"
+           },
+           "RaspBerry":{
+            "Name":"RaspBerry"
            },
         },
        "BehaviorObjects":{
@@ -110,7 +113,17 @@ export class Constants  {
          "GameOverIfTouchRobot" : {
             "Name":"game-over-if-touch-robot"
          },
+         "RaspBerryAreEaten":{
+            "Name":"raspberry-are-eaten"
+         },
+         "RaspBerryShow":{
+            "Name":"raspberry-show",
+            "HasRaspberry":"has-raspberry",
+            "BlockVisiblePropertyName":"raspberry-visible",
+            "RaspBerryEaten":"raspberry-eaten",
+         }
      }
+
 
 }
 

@@ -1,0 +1,26 @@
+import { LogicalConditionInterface } from "./logical-condition-interface";
+
+export class LogicalConditionObjectAttribute implements LogicalConditionInterface {
+    public parent:LogicalConditionInterface | null;
+    //[object, attributeName, valueExpected]
+    private objectAttributesValuesExpected:any[] = [];
+
+    constructor(objectAttributesValuesExpected:any[], parent:LogicalConditionInterface | null){
+        this.objectAttributesValuesExpected = objectAttributesValuesExpected;
+        this.parent = parent;
+    }
+
+    public isTrue(object:any):boolean{
+        for(let objectExpected in this.objectAttributesValuesExpected){
+            if(objectExpected[0] != object){
+                continue;
+            }
+            const attributeOfGivenObject = object[objectExpected[1]];
+            const attributeExpectedOfObject = objectExpected[2];
+            if(attributeOfGivenObject === attributeExpectedOfObject){
+                return true;
+            }
+        }
+        return false;
+    }
+}

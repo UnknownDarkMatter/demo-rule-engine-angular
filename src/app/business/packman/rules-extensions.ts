@@ -6,21 +6,27 @@ import { Convert } from 'src/app/services/convert';
 
 export class RulesExtensions {
 
-    public static getMovingObjectPosition(rootJsonObject:any, modelModifications:ModelModificationsCollection):ObjectPosition |null {
-        for(let modelModification of modelModifications.modelModifications){
-            if(modelModification.modelModificationKey === Constants.ModelModifications.MoveMovingObject.ModelModificationKey){
-                let moveModelModificationPayload = modelModification.payload as MoveModelModificationPayload;
-                return moveModelModificationPayload.newPosition;
+    public static getMovingObjectPosition(rootJsonObject:any, 
+        modelModifications:ModelModificationsCollection, includeNewPosition:boolean):ObjectPosition |null {
+        if(includeNewPosition){
+            for(let modelModification of modelModifications.modelModifications){
+                if(modelModification.modelModificationKey === Constants.ModelModifications.MoveMovingObject.ModelModificationKey){
+                    let moveModelModificationPayload = modelModification.payload as MoveModelModificationPayload;
+                    return moveModelModificationPayload.newPosition;
+                }
             }
-        }
+            }
         return this.searchMovingObjectPosition(rootJsonObject);
     }
 
-    public static getRobotObjectPosition(rootJsonObject:any, modelModifications:ModelModificationsCollection):ObjectPosition |null {
-        for(let modelModification of modelModifications.modelModifications){
-            if(modelModification.modelModificationKey === Constants.ModelModifications.MoveRobotObject.ModelModificationKey){
-                let moveModelModificationPayload = modelModification.payload as MoveModelModificationPayload;
-                return moveModelModificationPayload.newPosition;
+    public static getRobotObjectPosition(rootJsonObject:any, 
+        modelModifications:ModelModificationsCollection, includeNewPosition:boolean):ObjectPosition |null {
+        if(includeNewPosition){
+            for(let modelModification of modelModifications.modelModifications){
+                if(modelModification.modelModificationKey === Constants.ModelModifications.MoveRobotObject.ModelModificationKey){
+                    let moveModelModificationPayload = modelModification.payload as MoveModelModificationPayload;
+                    return moveModelModificationPayload.newPosition;
+                }
             }
         }
         return this.searchRobotObjectPosition(rootJsonObject);
@@ -34,6 +40,21 @@ export class RulesExtensions {
         if(!jsonObject.childs) { return null;}
         for(let child of jsonObject.childs){
             let foundObject = this.searchBlueBulletObject(child,position);
+            if(foundObject){
+                return foundObject;
+            }
+        }
+        return null;
+    }
+
+    public static searchRaspberryObject(jsonObject:any, position:ObjectPosition):any
+    {
+        if(this.isRaspberryInPosition(jsonObject,position)){
+            return jsonObject;
+        }
+        if(!jsonObject.childs) { return null;}
+        for(let child of jsonObject.childs){
+            let foundObject = this.searchRaspberryObject(child,position);
             if(foundObject){
                 return foundObject;
             }
@@ -88,6 +109,17 @@ export class RulesExtensions {
         if(position.x !== x || position.y !== y) { return false; }
         let isVisible = jsonObject[Constants.Rules.BlueBulletsAreEaten.BlockVisiblePropertyName];
         if(!isVisible) {return false;}
+
+        return true;
+    }
+
+    private static isRaspberryInPosition(jsonObject:any, position:ObjectPosition):boolean{
+        if(!jsonObject.position) {return false;}
+        const x = Convert.toNumber(jsonObject.position.toString().split(',')[0]);
+        const y = Convert.toNumber(jsonObject.position.toString().split(',')[1]);
+        if(position.x !== x || position.y !== y) { return false; }
+        let hasRaspberry = jsonObject[Constants.Rules.RaspBerryShow.HasRaspberry];
+        if(!hasRaspberry) {return false;}
 
         return true;
     }

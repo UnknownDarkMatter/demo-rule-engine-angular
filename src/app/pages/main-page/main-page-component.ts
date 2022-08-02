@@ -34,89 +34,52 @@ export class MainPageComponent implements AfterViewInit {
 
     onGuiAction(guiAction:GuiAction){
         if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.Objects.FilledBlock.Name){
-            this.createFilledBlock(guiAction.position);
+            this.createObject(guiAction.position, Constants.Gui.Objects.FilledBlock.Name);
         }
         if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.Objects.EmptyBlock.Name){
-            this.createEmptyBlock(guiAction.position);
+            this.createObject(guiAction.position, Constants.Gui.Objects.EmptyBlock.Name);
         }
         
         if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.BehaviorObjects.MovingObject.ObjectType){
-            this.createMovingObjectBlock(guiAction.position);
+            this.createObject(guiAction.position, Constants.Gui.BehaviorObjects.MovingObject.ObjectType);
         }
         if(guiAction.action === Constants.Gui.Actions.Delete && guiAction.object === Constants.Gui.BehaviorObjects.MovingObject.ObjectType){
-            this.deleteMovingObjectBlock(guiAction.position);
+            this.deleteObject(guiAction.position, Constants.Gui.BehaviorObjects.MovingObject.ObjectType);
         }
         
         if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.BehaviorObjects.RobotObject.ObjectType){
-            this.createRobotObjectBlock(guiAction.position);
+            this.createObject(guiAction.position, Constants.Gui.BehaviorObjects.RobotObject.ObjectType);
         }
         if(guiAction.action === Constants.Gui.Actions.Delete && guiAction.object === Constants.Gui.BehaviorObjects.RobotObject.ObjectType){
-            this.deleteRobotObjectBlock(guiAction.position);
+            this.deleteObject(guiAction.position, Constants.Gui.BehaviorObjects.RobotObject.ObjectType);
         }
           
         if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.Objects.BlueBullet.Name){
-            this.createBlueBullet(guiAction.position);
+            this.createObject(guiAction.position, Constants.Gui.Objects.BlueBullet.Name);
         }
         if(guiAction.action === Constants.Gui.Actions.Delete && guiAction.object === Constants.Gui.Objects.BlueBullet.Name){
-            this.deleteBlueBullet(guiAction.position);
+            this.deleteObject(guiAction.position, Constants.Gui.Objects.BlueBullet.Name);
+        }
+          
+        if(guiAction.action === Constants.Gui.Actions.Create && guiAction.object === Constants.Gui.Objects.RaspBerry.Name){
+            this.createObject(guiAction.position, Constants.Gui.Objects.RaspBerry.Name);
+        }
+        if(guiAction.action === Constants.Gui.Actions.Delete && guiAction.object === Constants.Gui.Objects.RaspBerry.Name){
+            this.deleteObject(guiAction.position, Constants.Gui.Objects.RaspBerry.Name);
         }
   }
 
-    private createFilledBlock(position:string){
+    private createObject(position:string, objectType:string){
         const x = position.split(',')[0];
         const y = position.split(',')[1];
-        this._guiBlocks.push({'X':Convert.toNumber(x), 'Y':Convert.toNumber(y), 'Type':Constants.Gui.Objects.FilledBlock.Name});
+        this._guiBlocks.push({'X':Convert.toNumber(x), 'Y':Convert.toNumber(y), 'Type':objectType});
         this.GuiBlocks = of(this._guiBlocks);
     }
 
-    private createEmptyBlock(position:string){
+    private deleteObject(position:string, objectType:string){
         const x = position.split(',')[0];
         const y = position.split(',')[1];
-        this._guiBlocks.push({'X':Convert.toNumber(x), 'Y':Convert.toNumber(y), 'Type':Constants.Gui.Objects.EmptyBlock.Name});
-        this.GuiBlocks = of(this._guiBlocks);
-    }
-
-    private createMovingObjectBlock(position:string){
-        const x = position.split(',')[0];
-        const y = position.split(',')[1];
-        this._guiBlocks.push({'X':Convert.toNumber(x), 'Y':Convert.toNumber(y), 'Type':Constants.Gui.BehaviorObjects.MovingObject.ObjectType});
-        this.GuiBlocks = of(this._guiBlocks);
-    }
-
-    private deleteMovingObjectBlock(position:string){
-        const x = position.split(',')[0];
-        const y = position.split(',')[1];
-        this._guiBlocks = this._guiBlocks.filter(m => m.Type !== Constants.Gui.BehaviorObjects.MovingObject.ObjectType 
-            || m.X !== Convert.toNumber(x) ||  m.Y !== Convert.toNumber(y));
-        this.GuiBlocks = of(this._guiBlocks);
-    }
-
-    private createRobotObjectBlock(position:string){
-        const x = position.split(',')[0];
-        const y = position.split(',')[1];
-        this._guiBlocks.push({'X':Convert.toNumber(x), 'Y':Convert.toNumber(y), 'Type':Constants.Gui.BehaviorObjects.RobotObject.ObjectType});
-        this.GuiBlocks = of(this._guiBlocks);
-    }
-
-    private deleteRobotObjectBlock(position:string){
-        const x = position.split(',')[0];
-        const y = position.split(',')[1];
-        this._guiBlocks = this._guiBlocks.filter(m => m.Type !== Constants.Gui.BehaviorObjects.RobotObject.ObjectType 
-            || m.X !== Convert.toNumber(x) ||  m.Y !== Convert.toNumber(y));
-        this.GuiBlocks = of(this._guiBlocks);
-    }
-
-    private createBlueBullet(position:string){
-        const x = position.split(',')[0];
-        const y = position.split(',')[1];
-        this._guiBlocks.push({'X':Convert.toNumber(x), 'Y':Convert.toNumber(y), 'Type':Constants.Gui.Objects.BlueBullet.Name});
-        this.GuiBlocks = of(this._guiBlocks);
-    }
-
-    private deleteBlueBullet(position:string){
-        const x = position.split(',')[0];
-        const y = position.split(',')[1];
-        this._guiBlocks = this._guiBlocks.filter(m => m.Type !== Constants.Gui.Objects.BlueBullet.Name 
+        this._guiBlocks = this._guiBlocks.filter(m => m.Type !== objectType 
             || m.X !== Convert.toNumber(x) ||  m.Y !== Convert.toNumber(y));
         this.GuiBlocks = of(this._guiBlocks);
     }

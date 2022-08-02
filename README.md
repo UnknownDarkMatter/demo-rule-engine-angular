@@ -23,7 +23,9 @@
 - ajouter l'action dans src\app\pages\main-page\main-page-component.ts, fonction onGuiAction
 - ajouter l'affichage dans src\app\components\gui-block\gui-block.component.ts
 
-## Si rien ne va plus : Constants.enableLogs
+## Si rien ne va plus : 
+- Constants.enableLogs
+- use this.appEngine.stopGame() to stop logging
 
 
 

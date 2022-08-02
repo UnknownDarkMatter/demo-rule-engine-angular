@@ -41,6 +41,13 @@ export class GuiManager {
         GuiManagerExtensions.initProgrammaticallyAddedObjects(jsonObject, this.guiUpdateSubject);
     }
 
+    public addObject(objectPosition:ObjectPosition, objectType:string){
+        this.guiUpdateSubject.next({
+            'action':Constants.Gui.Actions.Create, 
+            'object':objectType, 
+            'position':`${objectPosition.x},${objectPosition.y}`});
+    }
+
     public removeObject(objectPosition:ObjectPosition, objectType:string){
         this.guiUpdateSubject.next({
             'action':Constants.Gui.Actions.Delete, 

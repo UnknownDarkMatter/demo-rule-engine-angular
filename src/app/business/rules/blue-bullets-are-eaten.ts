@@ -32,7 +32,7 @@ export class BlueBulletsAreEaten implements RuleGeneric {
     }
 
     private movingObjectEatBlueBullet(behaviorObject:any, mapObject:any, modelModifications:ModelModificationsCollection){
-        const movingObjectPosition = RulesExtensions.getMovingObjectPosition(behaviorObject, modelModifications);
+        const movingObjectPosition = RulesExtensions.getMovingObjectPosition(behaviorObject, modelModifications, true);
         if(!movingObjectPosition) {return;}
         const blueBulletObject = RulesExtensions.searchBlueBulletObject(mapObject, movingObjectPosition);
         if(!blueBulletObject) {return;}
@@ -42,12 +42,12 @@ export class BlueBulletsAreEaten implements RuleGeneric {
         this.appEngine.guiManager.removeObject(
             movingObjectPosition, 
             Constants.Gui.Objects.BlueBullet.Name);
-        this.packmanService.increaseMovingObjectPoints();
+        this.packmanService.increaseMovingObjectPoints(1);
 
     }
 
     private robotObjectEatBlueBullet(behaviorObject:any, mapObject:any, modelModifications:ModelModificationsCollection){
-        const robotPosition = RulesExtensions.getRobotObjectPosition(behaviorObject, modelModifications);
+        const robotPosition = RulesExtensions.getRobotObjectPosition(behaviorObject, modelModifications, true);
         if(!robotPosition) {return;}
         const blueBulletObject = RulesExtensions.searchBlueBulletObject(mapObject, robotPosition);
         if(!blueBulletObject) {return;}
@@ -57,6 +57,6 @@ export class BlueBulletsAreEaten implements RuleGeneric {
         this.appEngine.guiManager.removeObject(
             robotPosition, 
             Constants.Gui.Objects.BlueBullet.Name);
-        this.packmanService.increaseRobotPoints();
+        this.packmanService.increaseRobotPoints(1);
     }
 }

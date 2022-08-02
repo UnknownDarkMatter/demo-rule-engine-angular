@@ -38,7 +38,9 @@ export class AppLoader {
         RulesFabric.TryCreateProcessorRuleMoveRobot(jsonObject, parentJsonObject, this.appEngine);
         RulesFabric.TryCreateProcessorRuleBlueBulletsAreEaten(jsonObject, parentJsonObject, this.appEngine, this.packmanService);
         RulesFabric.TryCreateProcessorRuleGameOverIfTouchRobot(jsonObject, parentJsonObject, this.appEngine, this.packmanService);
-        
+        RulesFabric.TryCreateProcessorRuleRaspberryAreEaten(jsonObject, parentJsonObject, this.appEngine, this.packmanService);
+        RulesFabric.TryCreateProcessorRuleRaspBerryShow(jsonObject, parentJsonObject, this.appEngine, this.packmanService);
+
         if(!jsonObject.childs) { return; }
         for(let child of jsonObject.childs){
             this.addGraphProcessors(child, jsonObject);

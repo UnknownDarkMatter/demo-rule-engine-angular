@@ -44,8 +44,11 @@ export class GuiBlockComponent implements OnInit {
       case Constants.Gui.Objects.BlueBullet.Name:{
         return 'blue-bullet-block';
       }
+      case Constants.Gui.Objects.RaspBerry.Name:{
+        return 'raspberry-block';
+      }
       default:{
-        break;
+          break;
       }
     }
   }

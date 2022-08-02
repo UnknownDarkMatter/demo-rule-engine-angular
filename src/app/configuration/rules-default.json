@@ -116,20 +116,30 @@
               "name":"blue-bullets-are-eaten",
               "childs":[
                 {
-                  "name": "move-inside-borders",
+                  "name": "raspberry-show",
                   "childs": [
                     {
-                      "name": "no-move-on-filled-blocks",
-                      "childs": [
+                      "name":"raspberry-are-eaten",
+                      "childs":[
                         {
-                          "name": "move-object"
+                          "name": "move-inside-borders",
+                          "childs": [
+                            {
+                              "name": "no-move-on-filled-blocks",
+                              "childs": [
+                                {
+                                  "name": "move-object"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "move-robot"
                         }
                       ]
                     }
                   ]
-                },
-                {
-                  "name": "move-robot"
                 }
               ]
             }
@@ -148,7 +158,9 @@
         {
           "name": "empty-block",
           "position": "2,3",
-          "has-blue-bullet":true
+          "has-blue-bullet":true,
+          "has-raspberry":true,
+          "raspberry-eaten":false
         },
         {
           "name": "empty-block",

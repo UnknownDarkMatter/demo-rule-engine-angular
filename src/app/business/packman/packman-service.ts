@@ -5,12 +5,12 @@ export class PackmanService {
     public movingObjectPoints:number = 0;
     public robotPoints:number = 0;
 
-    public increaseMovingObjectPoints(){
-        this.movingObjectPoints++;
+    public increaseMovingObjectPoints(points:number){
+        this.movingObjectPoints += points;
     }
 
-    public increaseRobotPoints(){
-        this.robotPoints++;
+    public increaseRobotPoints(points:number){
+        this.robotPoints += points
     }
 
 }

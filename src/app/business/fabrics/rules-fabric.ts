@@ -4,6 +4,8 @@ import { RuleMoveInsideBorders } from"../rules/move-inside-borders";
 import { RuleMoveRobot } from"../rules/rule-move-robot";
 import { BlueBulletsAreEaten } from"../rules/blue-bullets-are-eaten";
 import { GameOverIfTouchRobot } from '../rules/game-over-if-touch-robot';
+import { RaspBerryAreEaten } from '../rules/raspberry-are-eaten';
+import { RaspBerryShow } from '../rules/raspberry-show';
 import { AppEngine } from"../app-engine";
 import { Constants } from"../constants";
 import { PackmanService } from "../packman/packman-service";
@@ -61,6 +63,26 @@ export class RulesFabric {
         if(jsonObject.name !== Constants.Rules.GameOverIfTouchRobot.Name) { return false;}
         if(Constants.enableLogs) console.log(`RulesFabric: creating new rule GameOverIfTouchRobot.`);
         const processor = new GameOverIfTouchRobot(jsonObject, appEngine, packmanService); 
+        jsonObject[Constants.JsonObject.Processor.Name] = processor;
+        jsonObject[Constants.JsonObject.Parent.Name] = parentJsonObject;
+        return true;      
+    }
+
+    public static TryCreateProcessorRuleRaspberryAreEaten(jsonObject:any, parentJsonObject:any, appEngine:AppEngine,
+        packmanService:PackmanService):boolean{
+        if(jsonObject.name !== Constants.Rules.RaspBerryAreEaten.Name) { return false;}
+        if(Constants.enableLogs) console.log(`RulesFabric: creating new rule RaspBerryAreEaten.`);
+        const processor = new RaspBerryAreEaten(jsonObject, appEngine, packmanService); 
+        jsonObject[Constants.JsonObject.Processor.Name] = processor;
+        jsonObject[Constants.JsonObject.Parent.Name] = parentJsonObject;
+        return true;      
+    }
+
+    public static TryCreateProcessorRuleRaspBerryShow(jsonObject:any, parentJsonObject:any, appEngine:AppEngine,
+        packmanService:PackmanService):boolean{
+        if(jsonObject.name !== Constants.Rules.RaspBerryShow.Name) { return false;}
+        if(Constants.enableLogs) console.log(`RulesFabric: creating new rule RaspBerryShow.`);
+        const processor = new RaspBerryShow(jsonObject, appEngine, packmanService); 
         jsonObject[Constants.JsonObject.Processor.Name] = processor;
         jsonObject[Constants.JsonObject.Parent.Name] = parentJsonObject;
         return true;      

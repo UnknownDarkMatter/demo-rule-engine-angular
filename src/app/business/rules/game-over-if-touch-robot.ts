@@ -25,8 +25,8 @@ export class GameOverIfTouchRobot implements RuleGeneric {
     {
         if(Constants.enableLogs) console.log(`GameOverIfTouchRobot: calculating the model modifications ...`);
         const behaviorObject = JsonObjectUtils.getObject('behavior', this.appEngine.jsonObjectRoot);
-        const movingObjectPosition = RulesExtensions.getMovingObjectPosition(behaviorObject, modelModifications);
-        const robotPosition = RulesExtensions.getRobotObjectPosition(behaviorObject, modelModifications);
+        const movingObjectPosition = RulesExtensions.getMovingObjectPosition(behaviorObject, modelModifications, true);
+        const robotPosition = RulesExtensions.getRobotObjectPosition(behaviorObject, modelModifications, true);
 
         if(movingObjectPosition != null && robotPosition != null && movingObjectPosition.toString() === robotPosition.toString()){
             if(Constants.enableLogs) console.log(`... GameOverIfTouchRobot: Game is over. movingObjectPosition:'${movingObjectPosition.toString()}', robotPosition:'${robotPosition.toString()}'.`);
