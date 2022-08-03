@@ -3,6 +3,7 @@ import { ModelModificationsCollection } from"../models/model-notifications-colle
 import { MoveModelModificationPayload } from"../models/object-move/move-model-modification-payload";
 import { Constants } from"../constants";
 import { Convert } from 'src/app/services/convert';
+import { LogicalConditionInterface } from '../models/logical-condition-interface';
 
 export class RulesExtensions {
 
@@ -47,6 +48,11 @@ export class RulesExtensions {
         return null;
     }
 
+    public static calculateDynamicConditionIsTrue(rootJsonObject:any, condition:LogicalConditionInterface):boolean{
+        if(!condition){ return true;}
+        return this.isDynamicConditionSatisfied(rootJsonObject, condition);
+    }
+
     public static searchRaspberryObject(jsonObject:any, position:ObjectPosition):any
     {
         if(this.isRaspberryInPosition(jsonObject,position)){
@@ -60,6 +66,20 @@ export class RulesExtensions {
             }
         }
         return null;
+    }
+    public static isDynamicConditionSatisfied(jsonObject:any, condition:LogicalConditionInterface):boolean
+    {
+        if(condition.isTrue(jsonObject)){
+            return true;
+        }
+        if(!jsonObject.childs) { return null;}
+        for(let child of jsonObject.childs){
+            let isSatisfied = this.isDynamicConditionSatisfied(child,condition);
+            if(isSatisfied){
+                return true;
+            }
+        }
+        return false;
     }
 
     private static searchMovingObjectPosition(jsonObject:any):ObjectPosition |null{

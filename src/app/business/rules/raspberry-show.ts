@@ -8,6 +8,7 @@ import { RulesExtensions } from '../packman/rules-extensions';
 import { PackmanService } from "../packman/packman-service";
 import { ModelModification } from "../models/model-modification";
 import { ObjectPosition } from "../models/object-move/object-position";
+import { LogicalConditionInterface } from '../models/logical-condition-interface';
 
 
 export class RaspBerryShow implements RuleGeneric {
@@ -15,11 +16,14 @@ export class RaspBerryShow implements RuleGeneric {
     public appEngine:AppEngine;
     public packmanService:PackmanService;
     public ruleFriendlyName:string = "RaspBerryShow";
+    public dynamicCondition:LogicalConditionInterface|null;
 
-    constructor(jsonObject:any, appEngine:AppEngine, packmanService:PackmanService){
+    constructor(jsonObject:any, appEngine:AppEngine, packmanService:PackmanService, 
+        dynamicCondition:LogicalConditionInterface|null){
         this.appEngine = appEngine;
         this.jsonObject = jsonObject;
         this.packmanService = packmanService;
+        this.dynamicCondition = dynamicCondition;
     }
     
     public calculateModelModificationsOnNotificationResponses(
@@ -43,6 +47,9 @@ export class RaspBerryShow implements RuleGeneric {
     }
 
     public isDynamicConditionSatisfied():boolean{
+        if(this.dynamicCondition){
+            return RulesExtensions.calculateDynamicConditionIsTrue(this.appEngine.jsonObjectRoot, this.dynamicCondition);
+        }
         return true;
     }
 
@@ -52,6 +59,7 @@ export class RaspBerryShow implements RuleGeneric {
         if(isVisible){return;}
         const raspberryEaten = raspberryAtMovingObjectPosition[Constants.Rules.RaspBerryShow.RaspBerryEaten];
         if(raspberryEaten){return;}
+        if(!this.isDynamicConditionSatisfied()){return;}
        
         raspberryAtMovingObjectPosition[Constants.Rules.RaspBerryShow.BlockVisiblePropertyName] = true;
         if(Constants.enableLogs) console.log(`... RaspBerryShow: moving object make a raspberry been shown.`);
@@ -66,7 +74,8 @@ export class RaspBerryShow implements RuleGeneric {
         if(isVisible){return;}
         const raspberryEaten = raspberryAtMovingRobotPosition[Constants.Rules.RaspBerryShow.RaspBerryEaten];
         if(raspberryEaten){return;}
-       
+        if(!this.isDynamicConditionSatisfied()){return;}
+ 
         raspberryAtMovingRobotPosition[Constants.Rules.RaspBerryShow.BlockVisiblePropertyName] = true;
         if(Constants.enableLogs) console.log(`... RaspBerryShow: robot object make a raspberry been shown.`);
         this.appEngine.guiManager.addObject(

@@ -114,9 +114,13 @@
           "childs":[
             {
               "name":"blue-bullets-are-eaten",
+              "condition-ref":"blue-bullets-are-eaten",
+              "points":0,
               "childs":[
                 {
                   "name": "raspberry-show",
+                  "condition":"(blue-bullets-are-eaten.points > 10 and blue-bullets-are-eaten.points < 20)",
+                  "condition-bkp":"(blue-bullets-are-eaten.points > 10 and blue-bullets-are-eaten.points < 20)",
                   "childs": [
                     {
                       "name":"raspberry-are-eaten",

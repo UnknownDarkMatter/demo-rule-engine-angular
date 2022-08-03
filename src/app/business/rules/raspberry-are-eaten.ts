@@ -7,19 +7,23 @@ import { JsonObjectUtils } from "../../services/json-object-utils";
 import { RulesExtensions } from '../packman/rules-extensions';
 import { PackmanService } from "../packman/packman-service";
 import { ModelModification } from "../models/model-modification";
+import { LogicalConditionInterface } from "../models/logical-condition-interface";
 
 
 export class RaspBerryAreEaten implements RuleGeneric {
     public jsonObject:any;
     public appEngine:AppEngine;
     public packmanService:PackmanService;
+    public dynamicCondition:LogicalConditionInterface|null;
     public ruleFriendlyName:string = "RaspBerryAreEaten";
     private pointsEatRaspberry = 100;
 
-    constructor(jsonObject:any, appEngine:AppEngine, packmanService:PackmanService){
+    constructor(jsonObject:any, appEngine:AppEngine, packmanService:PackmanService,
+        dynamicCondition:LogicalConditionInterface|null){
         this.appEngine = appEngine;
         this.jsonObject = jsonObject;
         this.packmanService = packmanService;
+        this.dynamicCondition = dynamicCondition;
     }
     
     public calculateModelModificationsOnNotificationResponses(
@@ -40,6 +44,9 @@ export class RaspBerryAreEaten implements RuleGeneric {
     }
 
     public isDynamicConditionSatisfied():boolean{
+        if(this.dynamicCondition){
+            return RulesExtensions.calculateDynamicConditionIsTrue(this.appEngine.jsonObjectRoot, this.dynamicCondition);
+        }
         return true;
     }
 

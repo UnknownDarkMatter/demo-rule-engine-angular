@@ -13,6 +13,10 @@ export class PackmanService {
         this.robotPoints += points
     }
 
+    public getMovingObjectPoints(){
+        return this.movingObjectPoints;
+    }
+
 }
 
 

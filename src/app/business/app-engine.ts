@@ -15,6 +15,7 @@ import { ModelModificationsCollection } from './models/model-notifications-colle
 import { AppEngineExtensions } from './packman/app-engine-extensions';
 import { RuleGeneric } from "./rules/rule-generic";
 import { ProcessorGeneric } from "./graph-processors/processor-generic";
+import { LogicalConditionFabric } from "./fabrics/logical-condition-fabric";
 
 @Injectable()
 export class AppEngine {
@@ -145,9 +146,14 @@ export class AppEngine {
    private dumpRules(jsonObject:any, identation:number)//same algo as getModelModificationsFromRules
    {
         const identationMultiply=3;
+        let ruleProcessor:any;
+        let dynamicCondition:any;
         if(!jsonObject.childs)
         { 
-            if(Constants.enableLogs) console.log(`AppEngine : will execute rule starting from the most at right here : ${''.padStart(identation*identationMultiply, '  ')} ${jsonObject.name}, processor:${jsonObject[Constants.JsonObject.Processor.Name]}`);
+            ruleProcessor = jsonObject[Constants.JsonObject.Processor.Name];
+            dynamicCondition = null;
+            if(ruleProcessor && ruleProcessor.dynamicCondition) {dynamicCondition = ruleProcessor.dynamicCondition;}
+            if(Constants.enableLogs) console.log(`AppEngine : will execute rule starting from the most at right here : ${''.padStart(identation*identationMultiply, '  ')} ${jsonObject.name}, processor:${ruleProcessor} ${dynamicCondition?', dynamicCondition:'+dynamicCondition.toString():''}`);
             return;
         }
 
@@ -156,7 +162,10 @@ export class AppEngine {
             this.dumpRules(child, identation+1);
             i++;
             if(i === jsonObject.childs.length){
-                if(Constants.enableLogs) console.log(`AppEngine : will execute rule starting from the most at right here : ${''.padStart(identation*identationMultiply, '  ')} ${jsonObject.name}, processor:${jsonObject[Constants.JsonObject.Processor.Name]}`);
+                ruleProcessor = jsonObject[Constants.JsonObject.Processor.Name];
+                dynamicCondition = null;
+                if(ruleProcessor && ruleProcessor.dynamicCondition) {dynamicCondition = ruleProcessor.dynamicCondition;}
+                if(Constants.enableLogs) console.log(`AppEngine : will execute rule starting from the most at right here : ${''.padStart(identation*identationMultiply, '  ')} ${jsonObject.name}, processor:${ruleProcessor} ${dynamicCondition?', dynamicCondition:'+dynamicCondition.toString():''}`);
             }
         }
 

@@ -9,8 +9,8 @@ export enum LogicalOperator{
 
 export class LogicalConditionComposite implements LogicalConditionInterface {
     public parent:LogicalConditionInterface | null;
-    private operator:LogicalOperator;
-    private childs:LogicalConditionInterface[] = [];
+    public operator:LogicalOperator;
+    public childs:LogicalConditionInterface[] = [];
 
     constructor(operator:LogicalOperator, parent:LogicalConditionInterface | null){
         this.operator = operator;
@@ -35,5 +35,69 @@ export class LogicalConditionComposite implements LogicalConditionInterface {
         return isTrue;
     }
 
+    public toString():string {
+        let result = '';
+        if(this.operator === LogicalOperator.NOT){
+            result += 'not(';
+        } else {
+            result += '(';
+        }
+        let i = 0;
+        for(let child of this.childs){
+            if(i>0){
+                if(this.operator !== LogicalOperator.NOT){
+                    result+=` ${this.getLogicalOperator()} `;
+                }
+            }
+            result+=child.toString();
+            i++;
+        }
+        result+=')';
+        return result;
+    }
+   
+    public getRoot():LogicalConditionInterface
+    {
+        if(this.parent == null) {return this;}
+        return this.parent.getRoot();
+    }
 
+    public static ConvertStringToOperator(value:string):LogicalOperator | null
+    {
+        value = (value ?? '').trim().toLowerCase();
+        switch(value)
+        {
+            case 'and':{
+                return LogicalOperator.AND;
+            }
+            case 'or':{
+                return LogicalOperator.OR;
+            }
+            case 'not':{
+                return LogicalOperator.NOT;
+            }
+            default:{
+                break
+            }
+        }
+        return null;
+    }
+
+    private getLogicalOperator():string{
+        const operator = this.operator;
+        switch(operator){
+            case LogicalOperator.AND:{
+                return 'and';
+            }
+            case LogicalOperator.OR:{
+                return 'or';
+            }
+            case LogicalOperator.NOT:{
+                return 'not';
+            }
+            default:{
+                return '(undefined logical operator!)';
+            }
+        }
+   }
 }

@@ -20,11 +20,11 @@ export class MainPageComponent implements AfterViewInit {
     constructor(private guiManager: GuiManager) { }
     
     ngAfterViewInit(): void {
-        this.mainPageDiv.nativeElement.focus();
-
         this.guiManager.guiUpdateSubject.subscribe(guiAction => {
             this.onGuiAction(guiAction);
         });
+        
+        this.mainPageDiv.nativeElement.focus();
     }
 
     onKeyPress(event: KeyboardEvent){

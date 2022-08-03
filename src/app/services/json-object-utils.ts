@@ -16,6 +16,20 @@ export class JsonObjectUtils {
         return null;
     }
 
+    public static getObjectByAttribute(attributeName:string, attributeValue:string, jsonObject:any):any{
+        if(jsonObject[attributeName] === attributeValue){
+            return jsonObject;
+        }
+        if(!jsonObject.childs) { return null;}
+        for(let child of jsonObject.childs){
+            let childObject = this.getObjectByAttribute(attributeName, attributeValue, child);
+            if(childObject){
+                return childObject;
+            }
+        }
+        return null;
+    }
+
     public static addObjects(name:string, jsonObject:any, result:any[]){
         if(jsonObject.name === name){
             result.push(jsonObject);

@@ -6,6 +6,7 @@ import { ModelModificationsCollection } from"../models/model-notifications-colle
 import { JsonObjectUtils } from "../../services/json-object-utils";
 import { RulesExtensions } from '../packman/rules-extensions';
 import { PackmanService } from "../packman/packman-service";
+import { LogicalConditionInterface } from "../models/logical-condition-interface";
 
 
 export class GameOverIfTouchRobot implements RuleGeneric {
@@ -13,11 +14,14 @@ export class GameOverIfTouchRobot implements RuleGeneric {
     public appEngine:AppEngine;
     public packmanService:PackmanService;
     public ruleFriendlyName:string = "GameOverIfTouchRobot";
+    public dynamicCondition:LogicalConditionInterface|null;
 
-    constructor(jsonObject:any, appEngine:AppEngine, packmanService:PackmanService){
+    constructor(jsonObject:any, appEngine:AppEngine, packmanService:PackmanService,
+        dynamicCondition:LogicalConditionInterface|null){
         this.appEngine = appEngine;
         this.jsonObject = jsonObject;
         this.packmanService = packmanService;
+        this.dynamicCondition = dynamicCondition;
     }
     
     public calculateModelModificationsOnNotificationResponses(
@@ -39,6 +43,9 @@ export class GameOverIfTouchRobot implements RuleGeneric {
     }
 
     public isDynamicConditionSatisfied():boolean{
+        if(this.dynamicCondition){
+            return RulesExtensions.calculateDynamicConditionIsTrue(this.appEngine.jsonObjectRoot, this.dynamicCondition);
+        }
         return true;
     }
 }

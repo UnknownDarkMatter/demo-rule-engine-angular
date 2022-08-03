@@ -1,5 +1,6 @@
 export class Constants  {
-    static enableLogs = true
+    static enableLogs = false
+    static todo = true
 
     static Gui = 
     {
@@ -94,7 +95,9 @@ export class Constants  {
     
     static Rules = 
     {
-       "MoveInsideBorders" : {
+        "DynamicCondition":"condition",
+        "DynamicRefId":"condition-ref",
+        "MoveInsideBorders" : {
            "Name":"move-inside-borders"
         },
         "NoMoveOnFilledBlocks" : {
@@ -109,7 +112,8 @@ export class Constants  {
          "BlueBulletsAreEaten" : {
             "Name":"blue-bullets-are-eaten",
             "MapBlockAttributeName":"has-blue-bullet",
-            "BlockVisiblePropertyName":"blue-bullet-visible"
+            "BlockVisiblePropertyName":"blue-bullet-visible",
+            "Points":"points"
          },
          "GameOverIfTouchRobot" : {
             "Name":"game-over-if-touch-robot"

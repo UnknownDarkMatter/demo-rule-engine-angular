@@ -10,15 +10,19 @@ import { ObjectPosition } from"../models/object-move/object-position";
 import { ModelModificationsCollection } from"../models/model-notifications-collection";
 import { JsonObjectUtils } from"src/app/services/json-object-utils";
 import { Convert } from"src/app/services/convert";
+import { LogicalConditionInterface } from "../models/logical-condition-interface";
+import { RulesExtensions } from "../packman/rules-extensions";
 
 export class RuleMoveInsideBorders implements RuleGeneric {
     public jsonObject:any;
     public appEngine:AppEngine;
     public ruleFriendlyName:string = "RuleMoveInsideBorders";
+    public dynamicCondition:LogicalConditionInterface|null;
 
-    constructor(jsonObject:any, appEngine:AppEngine){
+    constructor(jsonObject:any, appEngine:AppEngine,dynamicCondition:LogicalConditionInterface|null){
         this.appEngine = appEngine;
         this.jsonObject = jsonObject;
+        this.dynamicCondition = dynamicCondition;
     }
     
     public calculateModelModificationsOnNotificationResponses(
@@ -41,6 +45,9 @@ export class RuleMoveInsideBorders implements RuleGeneric {
     }
 
     public isDynamicConditionSatisfied():boolean{
+        if(this.dynamicCondition){
+            return RulesExtensions.calculateDynamicConditionIsTrue(this.appEngine.jsonObjectRoot, this.dynamicCondition);
+        }
         return true;
     }
 }
